@@ -41,7 +41,7 @@ def home():
         f"Temperature Analysis from Start to End Dates: <a href='/api/v1.0/yyyy-mm-dd/yyyy-mm-dd'>/api/v1.0/yyyy-mm-dd/yyyy-mm-dd</a><br/>"
     )
 
-# Route to Precipitation
+# Route to Precipitation data
 @app.route("/api/v1.0/precipitation")
 def precipitation():
 # Session link to database, and query
@@ -57,7 +57,7 @@ def precipitation():
         prcp_list.append(prcp_dict)
     return jsonify(prcp_list)
     
-
+# Route to Stations
 @app.route("/api/v1.0/stations")
 def stations():
 # Session link to database and query
@@ -75,6 +75,24 @@ def stations():
         stations_dict["Elevation"] = elevation
         stations_list.append(stations_dict)
     return jsonify(stations_list)
+
+
+# Route to Temperature Observation Bias data
+@app.route("/api/v1.0/tobs")
+def tobs():
+    session = Session(engine)
+    year = dt.date (2017, 8, 23) - dt.timedelta(days=365)
+    results = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date >= year).order_by(Measurement.date.desc()).all()
+    session.close()
+# Convert to list to jsonify 
+    tobs_list = []
+    for date, tobs in results:
+        tobs_dict = {}
+        tobs_dict["Date"] = date
+        tobs_dict["TOBS"] = f"{tobs} F"
+        tobs_list.append(tobs_dict)
+    return jsonify(tobs_list)
+
     
 if __name__ == "__main__":
     app.run(debug=True)
