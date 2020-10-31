@@ -1,20 +1,18 @@
 # SQLAlchemy Project - Surfs Up!
-This project involves some climate analysis while planning a long holiday in Honolulu, Hawaii!
-
-## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+This project involves climate analysis while planning a long holiday in Honolulu, Hawaii, using Python and SQLAlchemy. Following the analysis, a Flask API based climate app is designed.
 
 ## Technologies
-- Python 3.7.9
-- Pandas 1.1.3
-- Numpy 1.19.2
-- SQLAlchemy 1.3.20
-- Flask 1.1.2
-- Jupyter Notebook
-- Visual Studio Code
-- Git Bash
+    Python - version 3.7.9
+    Pandas - version 1.1.3
+    Matplotlib - version 3.3.0
+    Numpy - version 1.19.2
+    Datetime - version 4.3
+    SQLAlchemy - version 1.3.20
+    Flask - version 1.1.2
+    Jupyter Notebook
+    Visual Studio Code
 
-## Analysis
+## Results
 
 ![Precipitation_Bar](./Images/precipitation.png)
 
