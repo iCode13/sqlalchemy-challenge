@@ -17,8 +17,11 @@ Add more general information about project. What the purpose of the project is? 
 ## Analysis
 
 ![Precipitation_Bar](./Images/precipitation.png)
+
 ![Temperature_Histogram](./Images/tobs_histogram.png)
+
 ![Trip_Avg_Temp](./Images/avg_temp_bar.png)
+
 ![Area Plot of Daily Normal Temperatures](./Images/area_plot_daily_normals.png)
 
 ## Contact

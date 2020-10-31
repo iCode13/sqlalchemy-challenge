@@ -93,7 +93,50 @@ def tobs():
         tobs_list.append(tobs_dict)
     return jsonify(tobs_list)
 
-    
+
+# Route for Temperatures with Start date
+@app.route("/api/v1.0/<start>")
+def temp_start(start):
+# Session link to database, and query 
+    session = Session(engine)
+    start = dt.datetime(2015, 12, 3)
+    results = session.query(func.min(Measurement.tobs),\
+                            func.avg(Measurement.tobs),\
+                            func.max(Measurement.tobs)).\
+                            filter(Measurement.date >= start).all()
+    session.close()
+# Convert to list to jsonify
+    temp_start_list = []
+    for min, avg, max in results:
+        temp_start_dict = {}
+        temp_start_dict["TMIN"] = min
+        temp_start_dict["TAVG"] = avg
+        temp_start_dict["TMAX"] = max
+        temp_start_list.append(temp_start_dict)
+    return jsonify(temp_start_list)
+
+
+# Route for Temperatures with Start and End date 
+@app.route("/api/v1.0/<start>/<end>")
+def temp_start_end(start, end):
+# Session link to database, and query 
+    session = Session(engine)
+    start = dt.datetime(2011, 12, 15)
+    end = dt.datetime(2015, 8, 23)
+    results = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+                filter(Measurement.date >= start).filter(Measurement.date <= end).all()
+    session.close()
+# Convert to list to jsonify
+    temp_start_end_list = []
+    for min, avg, max in results:
+        temp_start_end_dict = {}
+        temp_start_end_dict["Min"] = min
+        temp_start_end_dict["Average"] = avg
+        temp_start_end_dict["Max"] = max
+        temp_start_end_list.append(temp_start_end_dict)
+    return jsonify(temp_start_end_list)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
     
