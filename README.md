@@ -1,5 +1,5 @@
 # SQLAlchemy Project - Surfs Up!
-This project involves climate analysis while planning a long holiday in Honolulu, Hawaii, using Python and SQLAlchemy. Following the analysis, a Flask API based climate app is designed.
+This project involves climate analyses while planning a long holiday in Honolulu, Hawaii, using Python and SQLAlchemy. Following the analyses, a Flask API based climate app is designed.
 
 ## Analyses
 
